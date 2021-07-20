@@ -8,6 +8,7 @@ function Main() {
     <div className={style.container}>
       <Pagination />
       <Cards />
+      <Pagination />
     </div>
   )
 }
