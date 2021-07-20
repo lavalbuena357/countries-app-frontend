@@ -2,6 +2,7 @@ import './App.css';
 import Social from './components/Social/Social';
 import Header from './components/Header/Header';
 import Filters from './components/Filters/Filters';
+import Main from './components/Main/Main';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       </div>
       <div className='right_container'>
         <Filters />
+        <Main />
       </div>
     </div>
   );
