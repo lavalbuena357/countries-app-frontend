@@ -1,15 +1,17 @@
 import React from 'react';
 import style from './Social.module.css';
-import { FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaFacebook } from "react-icons/fa";
+import { social } from '../../utils/SocialData';
 
 function Social() {
   return (
     <div className={style.container}>
-      <FaGithub />
-      <FaLinkedin />
-      <FaInstagram />
-      <FaFacebook />
-      <FaTwitter />
+      <div className={style.social_container}>
+        {social.map((el, i) => {
+          return (
+            <a href={el.link} target='blank' key={i}>{el.icon}</a>
+          )
+        })}
+      </div>
     </div>
   )
 }

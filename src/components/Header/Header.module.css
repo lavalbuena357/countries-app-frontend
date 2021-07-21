@@ -19,4 +19,5 @@
 
 .text {
  grid-row-start: 3;
+ user-select: none;
 }
