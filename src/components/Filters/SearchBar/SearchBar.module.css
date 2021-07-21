@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  margin: 15px 25px;
+  border: 1px solid rgb(128, 128, 128);
+  border-radius: 15px;
+  width: 350px;
+  transition: all 0.3s;
+}
+
+.container:hover {
+  border: 1px solid #d2ff00;
+  transition: all 0.3s;
+}
+
+.icon {
+  padding: 10px;
+  color: rgb(128, 128, 128);
+  transition: all 0.3s;
+}
+
+.container:hover > .icon {
+  color: #d2ff00;
+  transition: all 0.3s;
+}
+
+.search_bar {
+  border: 0;
+  outline: none;
+  padding: 0 5px;
+  background-color: transparent;
+  color: #d2ff00;
+  width: 100%;
+}
