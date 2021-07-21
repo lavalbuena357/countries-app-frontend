@@ -10,7 +10,6 @@ function Main({ getCountries, countries }) {
 
   const countriesPerPage = 12;
 
-
   useEffect(() => {
     getCountries()
   }, []) // eslint-disable-line
@@ -25,12 +24,18 @@ function Main({ getCountries, countries }) {
 
   return (
     <div className={style.container}>
+      <Pagination 
+        currentPage = {currentPage}
+        countriesPerPage = {countriesPerPage}
+        paginate = {paginate}
+        countries = {countries}
+      />
       <Cards currentCountries={currentCountries}/>
       <Pagination 
         currentPage = {currentPage}
         countriesPerPage = {countriesPerPage}
         paginate = {paginate}
-        totalCountries = {countries.lenght}
+        countries = {countries}
       />
     </div>
   )

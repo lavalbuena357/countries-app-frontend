@@ -5,8 +5,8 @@ import Card from '../Card/Card';
 function Cards({ currentCountries }) {
   return (
     <div className={style.container}>
-      {currentCountries.map(el => 
-        <div className={style.card_container}>
+      {currentCountries.map((el, i) => 
+        <div className={style.card_container} key={i}>
           <Card 
             id = {el.id}
             flag = {el.flag}
