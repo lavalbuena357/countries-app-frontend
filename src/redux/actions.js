@@ -1,6 +1,7 @@
 import axios from 'axios';
 export const GET_COUNTRIES = 'GET_COUNTRIES';
-export const SEARCH_COUNTRIES = 'SEARCH_COUNTRIES'
+export const SEARCH_COUNTRIES = 'SEARCH_COUNTRIES';
+export const FILTER_CONTINENT = 'FILTER_CONTINENT';
 
 export function getCountries() {
   return (
@@ -30,5 +31,17 @@ export function searchCountries(name){
         payload: 'error'
     })
     }
+  }
+}
+
+export function filterContinent(continent) {
+  return async function(dispatch) {
+    try {
+      const continents = await axios.get(`http://countriesinfoapp.herokuapp.com/countries?continent=${continent}`);
+      dispatch({
+        type: FILTER_CONTINENT,
+        payload: continents.data
+      })
+    } catch(err) {console.log(err)}
   }
 }
