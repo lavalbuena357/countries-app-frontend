@@ -4,6 +4,7 @@
   height: 100vh;
   justify-content: space-around;
   font-size: 2rem;
+  position: relative;
 }
 
 .social_container {
@@ -12,6 +13,7 @@
   height: 80vh;
   justify-content: space-around;
   align-items: center;
+  position: fixed;
 }
 
 .social_container a {
