@@ -2,10 +2,20 @@ import React from 'react';
 import style from './Cards.module.css';
 import Card from '../Card/Card';
 
-function Cards() {
+function Cards({ countries }) {
   return (
     <div className={style.container}>
-      <Card />
+      {countries.map(el => 
+        <div className={style.card_container}>
+          <Card 
+            id = {el.id}
+            flag = {el.flag}
+            name = {el.name}
+            continent = {el.continent}
+            population = {el.population}
+          />  
+        </div>
+      )}
     </div>
   )
 }
