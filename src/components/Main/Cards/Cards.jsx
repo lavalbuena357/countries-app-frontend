@@ -1,11 +1,13 @@
 import React from 'react';
 import style from './Cards.module.css';
 import Card from '../Card/Card';
+import { connect } from 'react-redux';
 
-function Cards({ currentCountries }) {
+function Cards({ currentCountries, error }) {
   return (
     <div className={style.container}>
-      {currentCountries.map((el, i) => 
+      {error ? (<p>Country Not Found</p>) : (
+        currentCountries.map((el, i) => 
         <div className={style.card_container} key={i}>
           <Card 
             id = {el.id}
@@ -15,9 +17,15 @@ function Cards({ currentCountries }) {
             population = {el.population}
           />  
         </div>
-      )}
+      ))}
     </div>
   )
 }
 
-export default Cards;
+function mapStateToProps(state) {
+  return {
+      error: state.error,
+  };
+};
+
+export default connect(mapStateToProps)(Cards);

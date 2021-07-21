@@ -24,12 +24,6 @@ function Main({ getCountries, countries }) {
 
   return (
     <div className={style.container}>
-      <Pagination 
-        currentPage = {currentPage}
-        countriesPerPage = {countriesPerPage}
-        paginate = {paginate}
-        countries = {countries}
-      />
       <Cards currentCountries={currentCountries}/>
       <Pagination 
         currentPage = {currentPage}
