@@ -5,7 +5,7 @@ import style from './Main.module.css';
 import Pagination from './Pagination/Pagination';
 import Cards from './Cards/Cards';
 
-function Main({ getCountries, countries }) {
+function Main({ getCountries, countries, continent }) {
   const [currentPage, setCurrentPage] = useState(1)
 
   const countriesPerPage = 12;
@@ -14,10 +14,19 @@ function Main({ getCountries, countries }) {
     getCountries()
   }, []) // eslint-disable-line
 
+  function filterCountries() {
+    if(continent.length === 0) {
+      return countries
+    } else {
+      let showCountries = countries.filter(el => el.continent === continent[0].continent)
+      return showCountries;
+    }
+  }
+
   // Get current countries
   const indexOfLastCountry = currentPage * countriesPerPage;
   const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
-  const currentCountries = countries.slice(indexOfFirstCountry, indexOfLastCountry);
+  const currentCountries = filterCountries().slice(indexOfFirstCountry, indexOfLastCountry);
 
   // Change page
   const paginate = pageNumber => setCurrentPage(pageNumber);
@@ -29,7 +38,7 @@ function Main({ getCountries, countries }) {
         currentPage = {currentPage}
         countriesPerPage = {countriesPerPage}
         paginate = {paginate}
-        countries = {countries}
+        countries = {filterCountries()}
       />
     </div>
   )
@@ -37,13 +46,14 @@ function Main({ getCountries, countries }) {
 
 function mapStateToProps(state) {
   return {
-    countries: state.countries
+    countries: state.countries,
+    continent: state.continent
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    getCountries: () => dispatch(getCountries())
+    getCountries: () => dispatch(getCountries()),
   }
 }
 
