@@ -5,7 +5,9 @@ import SearchBar from './SearchBar/SearchBar';
 function Filters() {
   return (
     <div className={style.container}>
-      <SearchBar />
+      <div className={style.searchContainer}>
+        <SearchBar />
+      </div>
     </div>
   )
 }
