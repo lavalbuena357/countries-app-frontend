@@ -1,7 +1,8 @@
-import { GET_COUNTRIES } from "./actions";
+import { GET_COUNTRIES, SEARCH_COUNTRIES } from "./actions";
 
 const initialState = {
-  countries: []
+  countries: [],
+  error: false
 }
 
 function reducer(state = initialState, action) {
@@ -10,6 +11,17 @@ function reducer(state = initialState, action) {
       return {...state,
         countries: action.payload
       };
+    case SEARCH_COUNTRIES:
+      if(action.payload === 'error') {
+        return {...state,
+          error: true
+        }
+    } else{
+        return {...state,
+          countries: action.payload,
+          error: false
+        }
+    };
     default:
       return state;
   }
