@@ -18,6 +18,7 @@ function Filters({ filterContinent }) {
       <div className={style.filter}>
         <label htmlFor='all'>
           <input type='radio' id='all' name='continents' value='' onChange={e => handleChange(e)} defaultChecked/>All
+        </label>
         <label htmlFor='africa'>
           <input type='radio' id='africa' name='continents' value='Africa' onChange={e => handleChange(e)}/>Africa
         </label>
@@ -35,7 +36,6 @@ function Filters({ filterContinent }) {
         </label>
         <label htmlFor='polar'>
           <input type='radio' id='polar' name='continents' value='Polar' onChange={e => handleChange(e)}/>Other
-        </label>
         </label>
       </div>
     </div>
