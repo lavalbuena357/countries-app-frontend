@@ -2,10 +2,10 @@ import React from 'react';
 import style from './Cards.module.css';
 import Card from '../Card/Card';
 
-function Cards({ countries }) {
+function Cards({ currentCountries }) {
   return (
     <div className={style.container}>
-      {countries.map(el => 
+      {currentCountries.map(el => 
         <div className={style.card_container}>
           <Card 
             id = {el.id}
