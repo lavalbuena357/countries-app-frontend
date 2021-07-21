@@ -1,3 +1,41 @@
 .container {
-  border: 1px solid black;
+  
+}
+
+.flag img {
+  width: 100%;
+  height: 150px;
+  border-radius: 10px;
+}
+
+.container a {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  user-select: none;
+  filter: saturate(40%);
+  opacity: 70%;
+  transition: all 0.3s;
+}
+
+.container a:hover {
+  filter: saturate(100%);
+  opacity: 100%;
+  transition: all 0.3s;
+}
+
+.container a h1 {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.container a h3 {
+  color: #d2ff00;
+  font-weight: 400;
+}
+
+.container a p {
+  color: rgb(187, 187, 187);
 }
