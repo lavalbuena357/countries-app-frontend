@@ -7,7 +7,7 @@ export function getCountries() {
   return (
     async function(dispatch) {
       try {
-        const countries = await axios.get('http://countriesinfoapp.herokuapp.com/countries');
+        const countries = await axios.get('https://countriesinfoapp.herokuapp.com/countries');
         dispatch({
           type: GET_COUNTRIES,
           payload: countries.data
@@ -20,7 +20,7 @@ export function getCountries() {
 export function searchCountries(name){
   return async function(dispatch) {
     try {
-      const countries = await axios.get(`http://countriesinfoapp.herokuapp.com/countries?name=${name}`);
+      const countries = await axios.get(`https://countriesinfoapp.herokuapp.com/countries?name=${name}`);
       dispatch({
         type: SEARCH_COUNTRIES,
         payload: countries.data
@@ -37,7 +37,7 @@ export function searchCountries(name){
 export function filterContinent(continent) {
   return async function(dispatch) {
     try {
-      const continents = await axios.get(`http://countriesinfoapp.herokuapp.com/countries?continent=${continent}`);
+      const continents = await axios.get(`https://countriesinfoapp.herokuapp.com/countries?continent=${continent}`);
       dispatch({
         type: FILTER_CONTINENT,
         payload: continents.data
