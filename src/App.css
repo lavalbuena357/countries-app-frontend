@@ -14,3 +14,18 @@
   display: grid;
   grid-template: 100px 7fr/1fr;
 }
+
+@media only screen and (max-width: 996px) {
+  .App {
+    grid-template: 150px 1fr/1fr;
+  }
+
+  .left_container {
+    grid-template: 50px 1fr/1fr;
+  }
+
+  .right_container {
+    display: grid;
+    grid-template: 100px 1fr/1fr;
+  }
+}

@@ -57,3 +57,18 @@
   color: #db4a39;
   transition: all 0.3s ease-in-out;
 }
+
+@media only screen and (max-width: 996px) {
+  .container {
+    height: 10vh;
+    font-size: 1.5rem;
+  }
+
+  .social_container {
+    flex-direction: row;
+    height: 10vh;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+  }
+}
