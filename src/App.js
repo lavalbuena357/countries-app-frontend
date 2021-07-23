@@ -16,8 +16,8 @@ function App() {
       <div className='right_container'>
         <Route exact path='/' component={Filters} />
         <Route exact path='/' component={Main} />
+        <Route path='/detail/:id' component={CountryDetail} />
       </div>
-      <Route exact path='detail/:id' component={CountryDetail} />
     </div>
   );
 }
