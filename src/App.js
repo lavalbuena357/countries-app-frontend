@@ -13,10 +13,10 @@ function App() {
         <Route path='/' component={Social} />
         <Route path='/' component={Header} />
       </div>
+      <Route path='/detail/:id' component={CountryDetail} />
       <div className='right_container'>
         <Route exact path='/' component={Filters} />
         <Route exact path='/' component={Main} />
-        <Route path='/detail/:id' component={CountryDetail} />
       </div>
     </div>
   );
