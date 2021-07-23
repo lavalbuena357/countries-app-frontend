@@ -1,8 +1,9 @@
-import { GET_COUNTRIES, SEARCH_COUNTRIES, FILTER_CONTINENT } from "./actions";
+import { GET_COUNTRIES, SEARCH_COUNTRIES, FILTER_CONTINENT, COUNTRY_DETAIL } from "./actions";
 
 const initialState = {
   countries: [],
   continent: [],
+  detail: null,
   error: false
 }
 
@@ -36,6 +37,10 @@ function reducer(state = initialState, action) {
         }
       }
       return {...state, error: true}
+      case COUNTRY_DETAIL:
+        return {...state,
+          detail: action.payload
+        }
     default:
       return state;
   }
