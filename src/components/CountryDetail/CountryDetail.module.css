@@ -47,6 +47,7 @@
 .other_info ul {
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   padding-inline-start: 0;
   margin-bottom: 25px;
 }
