@@ -40,3 +40,17 @@ export function filterCountriesByCurrency(currency) {
     } catch (error) {console.log(error)}
   }
 }
+
+//filtrar paises por idioma
+export function filterCountriesByLanguage(language) {
+  return async function(dispatch) {
+    try {
+      const countriesLanguage = await axios.get(`${url}/lang/${language}`)
+      dispatch({
+        type: "COUNTRIES_BY_LANGUAGE",
+        payload: countriesLanguage.data
+      })
+    } catch (error) {console.log(error)}
+  }
+}
+
