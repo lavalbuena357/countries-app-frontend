@@ -54,3 +54,16 @@ export function filterCountriesByLanguage(language) {
   }
 }
 
+//filtrar paises por continente
+export function filterCountriesByContinent(continent) {
+  return async function(dispatch) {
+    try {
+      const countriesContinent = await axios.get(`${url}/region/${continent}`)
+      dispatch({
+        type: "COUNTRIES_BY_CONTINENT",
+        payload: countriesContinent.data
+      })
+    } catch (error) {console.log(error)}
+  }
+}
+
