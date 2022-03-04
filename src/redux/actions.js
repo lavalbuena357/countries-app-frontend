@@ -80,4 +80,10 @@ export function filterCountriesByContinent(continent) {
   }
 }
 
-
+//LLENAR DATOS
+//obtener todas los tipos de moneda
+export function setCurrencies() {
+  return {
+    type: "SET_CURRENCIES"
+  }
+}
