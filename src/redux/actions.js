@@ -15,6 +15,19 @@ export function getCountries() {
   }
 }
 
+//buscar pais por nombre
+export function getCountriesByName(name) {
+  return async function(dispatch) {
+    try {
+      const country = await axios.get(`${url}/name/${name}`)
+      dispatch({
+        type: "COUNTRY_BY_NAME",
+        payload: country.data
+      })
+    } catch (error) {console.log(error)}
+  }
+}
+
 //buscar pais por codigo
 export function getCountryByCode(code) {
   return async function(dispatch) {
@@ -66,4 +79,5 @@ export function filterCountriesByContinent(continent) {
     } catch (error) {console.log(error)}
   }
 }
+
 
