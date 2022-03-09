@@ -2,7 +2,8 @@ const initialState = {
   countries: [],
   currentCountry: null,
   currencies: [],
-  languages: []
+  languages: [],
+  continents: [{Americas: "América"}, {Europe: "Europa"}, {Asia: "Asia"}, {Oceania: "Oceanía"}, {Africa: "África"}, {Antarctic: "Antártida"}]
 }
 
 export default function reducer(state=initialState, action) {
