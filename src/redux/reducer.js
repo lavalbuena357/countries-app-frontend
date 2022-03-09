@@ -1,7 +1,8 @@
 const initialState = {
   countries: [],
   currentCountry: null,
-  currencies: []
+  currencies: [],
+  languages: []
 }
 
 export default function reducer(state=initialState, action) {
@@ -34,6 +35,22 @@ export default function reducer(state=initialState, action) {
         }
       })
       return {...state, currencies: filterCurrencies}
+    case "SET_LANGUAGES": 
+      const allLanguages = state.countries.map(el => el.languages)
+      const multipleLanguages = allLanguages.filter(el => el && Object.keys(el).length > 1)
+      const singleLanguage = allLanguages.filter(el => el && Object.keys(el).length === 1)
+      multipleLanguages.forEach(el => {
+        for (let item in el) {
+          singleLanguage[singleLanguage.length] = {[item]: el[item]}
+        }
+      })
+      let hashLanguage = {}
+      const filterLanguages = singleLanguage.filter(el => {
+        for (let item in el) {
+          return hashLanguage[item] ? false : hashLanguage[item] = true
+        }
+      })
+      return {...state, languages: filterLanguages}
     default:
       return state
   }
