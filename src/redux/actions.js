@@ -87,3 +87,10 @@ export function setCurrencies() {
     type: "SET_CURRENCIES"
   }
 }
+
+//obtener todos los idiomas
+export function setLanguages() {
+  return {
+    type: "SET_LANGUAGES"
+  }
+}
