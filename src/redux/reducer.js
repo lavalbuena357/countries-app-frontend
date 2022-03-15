@@ -1,57 +1,41 @@
+import { normalize } from '../utils/normalize'
 const initialState = {
-  countries: [],
+  countries: {},
+  searchCountries: [],
+  activeFilters: {currency: '', language: '', continent: ''},
   currentCountry: null,
   currencies: [],
   languages: [],
-  continents: [{Americas: "América"}, {Europe: "Europa"}, {Asia: "Asia"}, {Oceania: "Oceanía"}, {Africa: "África"}, {Antarctic: "Antártida"}]
+  continents: [{'South America': "América del Sur"}, {'North America': "América del Norte"}, {Europe: "Europa"}, {Asia: "Asia"}, {Oceania: "Oceanía"}, {Africa: "África"}, {Antarctica: "Antártida"}]
+
 }
 
 export default function reducer(state=initialState, action) {
   switch(action.type) {
     case "COUNTRIES": 
       return {...state, countries: action.payload}
-    case "COUNTRY_BY_NAME":
-      return {...state, countries: action.payload}
-    case "COUNTRY_BY_CODE":
+    case "SEARCH_COUNTRY":
+      const search = state.countries.countries.filter(el => normalize(el.name).includes(normalize(action.payload)))
+      if(search.length > 0) return {...state, searchCountries: search}
+      return {...state, searchCountries: []}
+    case "COUNTRY_BY_ID":
       return {...state, currentCountry: action.payload}
-    case "COUNTRIES_BY_CURRENCY":
+    case "FILTERS":
       return {...state, countries: action.payload}
-    case "COUNTRIES_BY_LANGUAGE":
-      return {...state, countries: action.payload}
-    case "COUNTRIES_BY_CONTINENT":
-      return {...state, countries: action.payload}
+    case "SET_FILTER":
+      return {...state, activeFilters: {...state.activeFilters, [action.payload.name]: action.payload.value}}
     case "SET_CURRENCIES":
-      const allCurrencies = state.countries.map(el => el.currencies)
-      const multipleObjects = allCurrencies.filter(el => el && Object.keys(el).length > 1)
-      const singleObjects = allCurrencies.filter(el => el && Object.keys(el).length === 1)
-      multipleObjects.forEach(el => {
-        for (let item in el) {
-          singleObjects[singleObjects.length] = {[item]:el[item]}
-        }
-      })
-      let hash = {}
-      const filterCurrencies = singleObjects.filter(el => {
-        for (let item in el) {
-          return hash[item] ? false : hash[item] = true
-        }
-      })
-      return {...state, currencies: filterCurrencies}
+      const singleObjects = []
+      state.countries.countries.map(el => el.currencies.forEach(el => singleObjects[singleObjects.length] = {id: el.id, name: el.name}))
+      let hash = []
+      const filterCurr = singleObjects.filter(el => hash.includes(el.id) ? false : hash.push(el.id))
+      return {...state, currencies: filterCurr}
     case "SET_LANGUAGES": 
-      const allLanguages = state.countries.map(el => el.languages)
-      const multipleLanguages = allLanguages.filter(el => el && Object.keys(el).length > 1)
-      const singleLanguage = allLanguages.filter(el => el && Object.keys(el).length === 1)
-      multipleLanguages.forEach(el => {
-        for (let item in el) {
-          singleLanguage[singleLanguage.length] = {[item]: el[item]}
-        }
-      })
-      let hashLanguage = {}
-      const filterLanguages = singleLanguage.filter(el => {
-        for (let item in el) {
-          return hashLanguage[item] ? false : hashLanguage[item] = true
-        }
-      })
-      return {...state, languages: filterLanguages}
+      const singleLanguage = []
+      state.countries.countries.map(el => el.languages.forEach(el => singleLanguage[singleLanguage.length] = {id: el.id, name: el.name}))
+      let hashLang = []
+      const filterLang = singleLanguage.filter(el => hashLang.includes(el.id) ? false : hashLang.push(el.id))
+      return {...state, languages: filterLang}
     default:
       return state
   }
