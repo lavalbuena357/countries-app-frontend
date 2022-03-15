@@ -3,10 +3,10 @@ import axios from 'axios'
 const url = process.env.REACT_APP_URI
 
 //traer todos los paises
-export function getCountries() {
+export function getCountries(page = 1, limit = 250) {
   return async function(dispatch) {
     try {
-      const countries = await axios.get(`${url}/all`)
+      const countries = await axios.get(`${url}/all?page=${page}&limit=${limit}`)
       dispatch({
         type: "COUNTRIES",
         payload: countries.data
@@ -16,67 +16,43 @@ export function getCountries() {
 }
 
 //buscar pais por nombre
-export function getCountriesByName(name) {
+export function searchCountry(name) {
+  return {
+    type: "SEARCH_COUNTRY",
+    payload: name
+  }
+}
+
+//buscar pais por id
+export function getCountryById(id) {
   return async function(dispatch) {
     try {
-      const country = await axios.get(`${url}/name/${name}`)
+      const country = await axios.get(`${url}/detail/${id}`)
       dispatch({
-        type: "COUNTRY_BY_NAME",
+        type: "COUNTRY_BY_ID",
         payload: country.data
       })
     } catch (error) {console.log(error)}
   }
 }
 
-//buscar pais por codigo
-export function getCountryByCode(code) {
+//filtros
+export function filterCountries(currency, language, continent, page = 1, limit = 20) {
   return async function(dispatch) {
     try {
-      const country = await axios.get(`${url}/alpha/${code}`)
+      const filter = await axios.get(`${url}/all?currency=${currency}&lang=${language}&region=${continent}&page=${page}&limit=${limit}`)
       dispatch({
-        type: "COUNTRY_BY_CODE",
-        payload: country.data
+        type: "FILTERS",
+        payload: filter.data
       })
     } catch (error) {console.log(error)}
   }
 }
 
-//filtrar paises por moneda
-export function filterCountriesByCurrency(currency) {
-  return async function(dispatch) {
-    try {
-      const countriesCurrency = await axios.get(`${url}/currency/${currency}`)
-      dispatch({
-        type: "COUNTRIES_BY_CURRENCY",
-        payload: countriesCurrency.data
-      })
-    } catch (error) {console.log(error)}
-  }
-}
-
-//filtrar paises por idioma
-export function filterCountriesByLanguage(language) {
-  return async function(dispatch) {
-    try {
-      const countriesLanguage = await axios.get(`${url}/lang/${language}`)
-      dispatch({
-        type: "COUNTRIES_BY_LANGUAGE",
-        payload: countriesLanguage.data
-      })
-    } catch (error) {console.log(error)}
-  }
-}
-
-//filtrar paises por continente
-export function filterCountriesByContinent(continent) {
-  return async function(dispatch) {
-    try {
-      const countriesContinent = await axios.get(`${url}/region/${continent}`)
-      dispatch({
-        type: "COUNTRIES_BY_CONTINENT",
-        payload: countriesContinent.data
-      })
-    } catch (error) {console.log(error)}
+export function setFilter(name, value) {
+  return {
+    type: "SET_FILTER",
+    payload: {name, value}
   }
 }
 
