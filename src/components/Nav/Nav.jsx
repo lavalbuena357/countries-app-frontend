@@ -1,34 +1,37 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import { filterCountriesByContinent, filterCountriesByCurrency, filterCountriesByLanguage } from '../../redux/actions'
+import { useSelector, useDispatch } from 'react-redux'
+import { filterCountries } from '../../redux/actions'
 import Filter from '../Filter/Filter'
 
 function Nav() {
 
-  const currencies = useSelector(state => state.currencies)
-  const languages = useSelector(state => state.languages)
-  const continents = useSelector(state => state.continents)
+  const dispatch = useDispatch()
+
+  const { currencies, languages, continents, activeFilters } = useSelector(state => state)
 
   return (
     <div>
       <Filter 
-        action={filterCountriesByCurrency}
+        type='currency'
+        action={async () => await dispatch(filterCountries(activeFilters.currency, activeFilters.language, activeFilters.continent, 1, 250))}
         text='Filtrar por moneda' 
         mapArr={currencies} 
-        valuePred={el => Object.keys(el)[0]}
-        optionsText={el => `${Object.keys(el)[0]} - ${Object.values(el)[0].name} - ${Object.values(el)[0].symbol}`}
+        valuePred={el => el.id}
+        optionsText={el => `${el.id} - ${el.name}`}
       />
 
       <Filter 
-        action={filterCountriesByLanguage}
+        type='language'
+        action={async () => await dispatch(filterCountries(activeFilters.currency, activeFilters.language, activeFilters.continent, 1, 250))}
         text='Filtrar por idioma' 
         mapArr={languages} 
-        valuePred={el => Object.keys(el)[0]}
-        optionsText={el => Object.values(el)[0]}
+        valuePred={el => el.id}
+        optionsText={el => el.name}
       />
 
       <Filter 
-        action={filterCountriesByContinent}
+        type='continent'
+        action={async () => await dispatch(filterCountries(activeFilters.currency, activeFilters.language, activeFilters.continent, 1, 250))}
         text='Filtrar por continente' 
         mapArr={continents} 
         valuePred={el => Object.keys(el)[0]}
