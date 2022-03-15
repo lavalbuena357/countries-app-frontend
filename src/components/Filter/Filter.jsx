@@ -1,12 +1,19 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { setFilter } from '../../redux/actions'
 
 function Filter(props) {
+
+  const activeFilters = useSelector(state => state.activeFilters)
+
+  useEffect(() => {
+    props.action()
+  }, [activeFilters])
 
   const dispatch = useDispatch()
 
   function handleChange(e) {
-    dispatch(props.action(e.target.value))
+    dispatch(setFilter(props.type, e.target.value))
   }
 
   return (
