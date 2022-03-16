@@ -15,8 +15,8 @@ export default function reducer(state=initialState, action) {
     case "COUNTRIES": 
       return {...state, countries: action.payload}
     case "SEARCH_COUNTRY":
-      const search = state.countries.countries.filter(el => normalize(el.name).includes(normalize(action.payload)))
-      if(search.length > 0) return {...state, searchCountries: search}
+      const search = state.countries.countries.filter(el => normalize(el.name).slice(0, action.payload.length) === (normalize(action.payload)))
+      if(search.length > 0 && search.length < state.countries.countries.length) return {...state, searchCountries: search}
       return {...state, searchCountries: []}
     case "COUNTRY_BY_ID":
       return {...state, currentCountry: action.payload}
