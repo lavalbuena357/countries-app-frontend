@@ -4,13 +4,19 @@ import Card from '../Card/Card'
 
 function Cards() {
 
-  const countries = useSelector(state => state.countries)
+  const { countries , loader, searchCountries } = useSelector(state => state)
 
   return (
-    <div>
+    <div style={{display:'flex', flexWrap:'wrap'}}>
       {
+        loader ? <p>cargando...</p> : 
+        (searchCountries.countries && searchCountries.countries.length === 0) || countries.countries && countries.countries.length === 0 ? <span>No se encontraron resultados...</span> :
+        searchCountries.countries ? 
+        searchCountries.countries.map((el, i) => (
+          <Card key={i} coat={el.coats_of_arms} flag={el.flag} code={el.id} name={el.name} continent={el.continent} lang={el.languages} />
+        )) :
         countries.countries && countries.countries.map((el, i) => (
-          <Card coat={el.coats_of_arms} flag={el.flag} code={el.id} name={el.name} continent={el.continent} lang={el.languages} />
+          <Card key={i} coat={el.coats_of_arms} flag={el.flag} code={el.id} name={el.name} continent={el.continent} lang={el.languages} />
         ))
       }
     </div>
