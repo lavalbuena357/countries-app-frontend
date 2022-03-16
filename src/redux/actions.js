@@ -70,3 +70,11 @@ export function setLanguages() {
     type: "SET_LANGUAGES"
   }
 }
+
+//loader 
+export function loader(bool) {
+  return {
+    type: "LOADER",
+    payload: bool
+  }
+}
