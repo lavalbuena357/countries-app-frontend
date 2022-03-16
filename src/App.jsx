@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header/Header'
-import Nav from './components/Nav/Nav'
+import Main from './pages/Main/Main'
 import { getCountries, setCurrencies, setLanguages } from './redux/actions'
 
 function App() {
@@ -20,7 +21,9 @@ function App() {
   return (
     <div>
       <Header />
-      <Nav />
+      <Routes>
+        <Route path='/' element={<Main />} />
+      </Routes>
     </div>
   )
 }
