@@ -1,13 +1,13 @@
 import { normalize } from '../utils/normalize'
 const initialState = {
   countries: {},
-  searchCountries: [],
+  searchCountries: {},
   activeFilters: {currency: '', language: '', continent: ''},
   currentCountry: null,
   currencies: [],
   languages: [],
-  continents: [{'South America': "América del Sur"}, {'North America': "América del Norte"}, {Europe: "Europa"}, {Asia: "Asia"}, {Oceania: "Oceanía"}, {Africa: "África"}, {Antarctica: "Antártida"}]
-
+  continents: [{'South America': "América del Sur"}, {'North America': "América del Norte"}, {Europe: "Europa"}, {Asia: "Asia"}, {Oceania: "Oceanía"}, {Africa: "África"}, {Antarctica: "Antártida"}],
+  loader: true
 }
 
 export default function reducer(state=initialState, action) {
@@ -16,8 +16,8 @@ export default function reducer(state=initialState, action) {
       return {...state, countries: action.payload}
     case "SEARCH_COUNTRY":
       const search = state.countries.countries.filter(el => normalize(el.name).slice(0, action.payload.length) === (normalize(action.payload)))
-      if(search.length > 0 && search.length < state.countries.countries.length) return {...state, searchCountries: search}
-      return {...state, searchCountries: []}
+      if(search.length < state.countries.countries.length) return {...state, searchCountries: {countries: search}}
+      return {...state, searchCountries: {}}
     case "COUNTRY_BY_ID":
       return {...state, currentCountry: action.payload}
     case "FILTERS":
@@ -36,6 +36,8 @@ export default function reducer(state=initialState, action) {
       let hashLang = []
       const filterLang = singleLanguage.filter(el => hashLang.includes(el.id) ? false : hashLang.push(el.id))
       return {...state, languages: filterLang}
+    case "LOADER":
+      return {...state, loader: action.payload}
     default:
       return state
   }
