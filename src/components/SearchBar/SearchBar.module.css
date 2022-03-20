@@ -1,0 +1,16 @@
+.container {
+  margin: 10px 40px;
+}
+
+.container input {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+}
+
+.container input:focus-visible {
+  outline: none;
+  box-shadow: 0 0 5px  rgb(113, 144, 204);
+  transition: all 0.3s ease;
+}
