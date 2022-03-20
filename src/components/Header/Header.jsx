@@ -1,9 +1,10 @@
 import React from 'react'
+import styles from './Header.module.css'
 
 function Header() {
   return (
-    <div>
-      <h1>Conociendo el mundo</h1>
+    <div className={styles.container}>
+      <h1>Countries App - React Js</h1>
     </div>
   )
 }

@@ -1,0 +1,6 @@
+.container {
+  margin: 20px 40px;
+  color:  rgb(37, 58, 99);
+  user-select: none;
+  cursor: pointer;
+}
