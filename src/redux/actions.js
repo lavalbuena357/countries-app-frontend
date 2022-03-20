@@ -37,7 +37,7 @@ export function getCountryById(id) {
 }
 
 //filtros
-export function filterCountries(currency, language, continent, page = 1, limit = 20) {
+export function filterCountries(currency, language, continent, page = 1, limit = 250) {
   return async function(dispatch) {
     try {
       const filter = await axios.get(`${url}/all?currency=${currency}&lang=${language}&region=${continent}&page=${page}&limit=${limit}`)
