@@ -13,6 +13,13 @@
   align-items: center;
 }
 
+.found {
+  text-transform: uppercase;
+  color:  rgb(37, 58, 99);
+  font-weight: 600;
+  user-select: none;
+}
+
 .cards_box button {
   background-color: rgb(16, 30, 58);
   border: none ;

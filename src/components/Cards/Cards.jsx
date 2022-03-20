@@ -23,7 +23,7 @@ function Cards() {
         (searchCountries.countries && searchCountries.countries.length === 0) || countries.countries && countries.countries.length === 0 ? <span>No se encontraron resultados...</span> :
         searchCountries.countries ? 
         <div className={styles.cards_box}>
-          <p>{searchCountries.countries.length} {searchCountries.countries.length > 1 ? 'paises' : 'país'} encontrados</p>
+          <p className={styles.found}>{searchCountries.countries.length} {searchCountries.countries.length > 1 ? 'paises' : 'país'} encontrados</p>
           <div className={styles.cards_ctn}>
             {searchCountries.countries.slice(0, blocks*20).map((el, i) => (
             <Card key={i} coat={el.coats_of_arms} flag={el.flag} code={el.id} name={el.name} continent={el.continent} lang={el.languages} />
@@ -33,7 +33,7 @@ function Cards() {
         </div> 
         :
         <div className={styles.cards_box}>
-          <p>{countries.countries.length} paises encontrados</p>
+          <p className={styles.found}>{countries.countries.length} paises encontrados</p>
           <div className={styles.cards_ctn}>
             {countries.countries.slice(0, blocks*20).map((el, i) => (
               <Card key={i} coat={el.coats_of_arms} flag={el.flag} code={el.id} name={el.name} continent={el.continent} lang={el.languages} />
