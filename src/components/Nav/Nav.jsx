@@ -13,7 +13,7 @@ function Nav() {
     <div>
       <Filter 
         type='currency'
-        action={async () => await dispatch(filterCountries(activeFilters.currency, activeFilters.language, activeFilters.continent, 1, 250))}
+        action={async () => await dispatch(filterCountries(activeFilters.currency, activeFilters.language, activeFilters.continent))}
         text='Filtrar por moneda' 
         mapArr={currencies} 
         valuePred={el => el.id}
@@ -22,7 +22,7 @@ function Nav() {
 
       <Filter 
         type='language'
-        action={async () => await dispatch(filterCountries(activeFilters.currency, activeFilters.language, activeFilters.continent, 1, 250))}
+        action={async () => await dispatch(filterCountries(activeFilters.currency, activeFilters.language, activeFilters.continent))}
         text='Filtrar por idioma' 
         mapArr={languages} 
         valuePred={el => el.id}
@@ -31,7 +31,7 @@ function Nav() {
 
       <Filter 
         type='continent'
-        action={async () => await dispatch(filterCountries(activeFilters.currency, activeFilters.language, activeFilters.continent, 1, 250))}
+        action={async () => await dispatch(filterCountries(activeFilters.currency, activeFilters.language, activeFilters.continent))}
         text='Filtrar por continente' 
         mapArr={continents} 
         valuePred={el => Object.keys(el)[0]}
