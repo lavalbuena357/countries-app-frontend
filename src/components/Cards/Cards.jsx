@@ -19,8 +19,8 @@ function Cards() {
   return (
     <div className={styles.container}>
       {
-        loader ? <p>cargando...</p> : 
-        (searchCountries.countries && searchCountries.countries.length === 0) || countries.countries && countries.countries.length === 0 ? <span>No se encontraron resultados...</span> :
+        loader ? <p className={styles.found}>cargando...</p> : 
+        (searchCountries.countries && searchCountries.countries.length === 0) || countries.countries && countries.countries.length === 0 ? <span className={styles.found}>No se encontraron resultados...</span> :
         searchCountries.countries ? 
         <div className={styles.cards_box}>
           <p className={styles.found}>{searchCountries.countries.length} {searchCountries.countries.length > 1 ? 'paises' : 'país'} encontrados</p>
