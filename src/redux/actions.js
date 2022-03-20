@@ -30,7 +30,7 @@ export function getCountryById(id) {
       const country = await axios.get(`${url}/detail/${id}`)
       dispatch({
         type: "COUNTRY_BY_ID",
-        payload: country.data
+        payload: country.data.country
       })
     } catch (error) {console.log(error)}
   }
