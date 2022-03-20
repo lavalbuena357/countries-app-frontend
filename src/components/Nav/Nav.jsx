@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { filterCountries } from '../../redux/actions'
 import Filter from '../Filter/Filter'
+import styles from './Nav.module.css'
 
 function Nav() {
 
@@ -10,7 +11,7 @@ function Nav() {
   const { currencies, languages, continents, activeFilters } = useSelector(state => state)
 
   return (
-    <div>
+    <div className={styles.container}>
       <Filter 
         type='currency'
         action={async () => await dispatch(filterCountries(activeFilters.currency, activeFilters.language, activeFilters.continent))}

@@ -1,0 +1,14 @@
+.container {
+  margin-right: 10px;
+}
+
+.container select:focus-visible {
+  outline: none;
+}
+
+.container select {
+  border: none;
+  padding: 10px 20px;
+  color:  rgb(37, 58, 99);
+  max-width: 200px;
+}

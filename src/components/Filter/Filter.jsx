@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setFilter } from '../../redux/actions'
+import styles from './Filter.module.css'
 
 function Filter(props) {
 
@@ -17,7 +18,7 @@ function Filter(props) {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <select onChange={handleChange}>
         <option value="">{props.text}</option>
         {
