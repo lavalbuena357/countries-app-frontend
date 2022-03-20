@@ -1,0 +1,30 @@
+.container {
+  margin: 20px;
+}
+
+.cards_ctn {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cards_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cards_box button {
+  background-color: rgb(16, 30, 58);
+  border: none ;
+  padding: 5px;
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+}
+
+.cards_box button:hover {
+  background-color:  rgb(37, 58, 99);
+  transition: all 0.3s ease;
+}
