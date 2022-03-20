@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header/Header'
+import Detail from './pages/Detail/Detail'
 import Main from './pages/Main/Main'
 import { getCountries, loader, setCurrencies, setLanguages } from './redux/actions'
 
@@ -25,6 +26,7 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Main />} />
+        <Route path='/:id' element={<Detail />} />
       </Routes>
     </div>
   )
