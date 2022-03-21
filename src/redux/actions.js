@@ -24,16 +24,11 @@ export function searchCountry(name) {
 }
 
 //buscar pais por id
-export function getCountryById(id) {
-  return async function(dispatch) {
-    try {
-      const country = await axios.get(`${url}/detail/${id}`)
-      dispatch({
-        type: "COUNTRY_BY_ID",
-        payload: country.data.country
-      })
-    } catch (error) {console.log(error)}
-  }
+export async function getCountryById(id) {
+  try {
+    const country = await axios.get(`${url}/detail/${id}`)
+    return country.data.country
+  } catch (error) {console.log(error)}
 }
 
 //filtros

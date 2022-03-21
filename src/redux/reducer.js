@@ -3,7 +3,6 @@ const initialState = {
   countries: {},
   searchCountries: {},
   activeFilters: {currency: '', language: '', continent: ''},
-  currentCountry: null,
   currencies: [],
   languages: [],
   continents: [{'South America': "América del Sur"}, {'North America': "América del Norte"}, {Europe: "Europa"}, {Asia: "Asia"}, {Oceania: "Oceanía"}, {Africa: "África"}, {Antarctica: "Antártida"}],
@@ -18,8 +17,6 @@ export default function reducer(state=initialState, action) {
       const search = state.countries.countries.filter(el => normalize(el.name).slice(0, action.payload.length) === (normalize(action.payload)))
       if(search.length < state.countries.countries.length) return {...state, searchCountries: {countries: search}}
       return {...state, searchCountries: {}}
-    case "COUNTRY_BY_ID":
-      return {...state, currentCountry: action.payload}
     case "FILTERS":
       return {...state, countries: action.payload}
     case "SET_FILTER":
