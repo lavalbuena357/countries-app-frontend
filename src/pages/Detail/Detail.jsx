@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import styles from './Detail.module.css'
 import { Link, useParams } from 'react-router-dom'
 import { getCountryById } from '../../redux/actions'
-import { useEventCallback } from '@mui/material'
 
 function Detail() {
   const [isLoading, setIsLoading] = useState(true)
@@ -45,7 +44,7 @@ function Detail() {
 
           <div className={styles.map_ctn}>
             <h3>{country.continent}</h3>
-            <a href={country.map} target='_blank'>Ver mapa</a>        
+            <a href={country.map} target='_blank' rel="noreferrer">Ver mapa</a>        
           </div>
           </div>
 

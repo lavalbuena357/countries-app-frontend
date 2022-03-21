@@ -2,3 +2,9 @@
   margin: 10px 40px;
   display: flex;  
 }
+
+@media only screen and (max-width: 760px) {
+  .container {
+    flex-direction: column;
+  }
+}

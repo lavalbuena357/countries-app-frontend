@@ -14,3 +14,17 @@
   box-shadow: 0 0 5px  rgb(113, 144, 204);
   transition: all 0.3s ease;
 }
+
+@media only screen and (max-width: 760px) {
+  .container{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    margin: 10px 10px 0 50px;
+  }
+  .container input {
+    width: 80%;
+    height: 25px;
+    border-radius: 40px;
+  }
+}
