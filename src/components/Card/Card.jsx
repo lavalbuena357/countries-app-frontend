@@ -1,16 +1,13 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { getCountryById } from '../../redux/actions'
 import styles from './Card.module.css'
 
 function Card(props) {
 
   const navigate = useNavigate()
-  const dispatch = useDispatch()
 
   async function goToDetail(id) {
-    await dispatch(getCountryById(id))
     navigate(`/${id}`)
   }
 
