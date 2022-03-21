@@ -2,18 +2,15 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  user-select: none;
-}
-
-.panel_sup {
-  border-bottom: 5px double rgb(37, 58, 99);
-  padding-bottom: 10px;
+  user-select: none;  
 }
 
 .panel_sup {
   display: flex;
   justify-content: space-between;
   margin: 20px 5%;
+  border-bottom: 5px double rgb(37, 58, 99);
+  padding-bottom: 10px;
 }
 
 .panel_inf {
@@ -148,5 +145,43 @@
 
 .borders_item a:hover {
   color: rgb(37, 58, 99);
+}
+
+@media only screen and (max-width: 750px) {
+  .panel_sup {
+    flex-direction: column-reverse;
+  }
+  .flag_ctn {
+    align-self: flex-end;
+  }
+  .flag_ctn img {
+    max-width: 100px;
+  }
+  .coat_ctn img {
+    max-height: 250px;
+  }
+}
+
+@media only screen and (max-width: 680px) {
+  .panel_inf {
+    flex-direction: column;
+  }
+  .general_info_ctn, .other_info_ctn, .borders_info_ctn {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    max-width: 100%;
+    border-bottom: 5px double rgb(37, 58, 99);
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .flag_ctn {
+    margin-top: 20px;
+    align-self: center;
+  }
+  .map_ctn {
+    align-self: flex-start;
+    margin-bottom: 15px;
+  }
 }
 

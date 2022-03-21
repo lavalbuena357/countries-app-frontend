@@ -50,6 +50,7 @@ function Detail() {
 
           <div className={styles.panel_inf}>
           <div className={styles.general_info_ctn}>
+            <h3>Información General: </h3>
             <p className={styles.info_item}><span>Nombre: </span>{country.name}</p>
             <p className={styles.info_item}><span>Capital: </span>{country.capital}</p>
             <p className={styles.info_item}><span>Área: </span>{new Intl.NumberFormat().format(country.area)} km2</p>
@@ -81,6 +82,7 @@ function Detail() {
           </div>
 
           <div className={styles.other_info_ctn}>
+            <h3>Otra Información: </h3>
             <p className={styles.info_item}><span>Miembro ONU: </span>{country.un_member ? 'SI' : 'NO'}</p>
             <p className={styles.info_item}><span>País independiente: </span>{country.independent ? 'SI' : 'NO'}</p>
             <p className={styles.info_item}><span>Indicativo telefónico: </span>{country.callsign}</p>
