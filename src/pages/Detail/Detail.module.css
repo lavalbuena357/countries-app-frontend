@@ -1,0 +1,152 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  user-select: none;
+}
+
+.panel_sup {
+  border-bottom: 5px double rgb(37, 58, 99);
+  padding-bottom: 10px;
+}
+
+.panel_sup {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 5%;
+}
+
+.panel_inf {
+  display: flex;
+  margin: 20px 5%;
+}
+
+.flag_ctn {
+  display: flex;
+  align-self: center;
+}
+
+.coat_ctn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flag_ctn img, .coat_ctn img {
+  max-width: 200px;
+}
+
+.coat_ctn h1 {
+  font-size: 1.5rem;
+}
+
+.map_ctn {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+}
+
+.map_ctn h3 {
+  font-weight: 500;
+}
+
+.map_ctn a {
+  text-decoration: none;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  padding: 5px;
+  color: rgb(51, 160, 233);
+  background-color: transparent;
+  border-radius: 15px;
+  border: 1px solid rgb(51, 160, 233);
+  transition: all 0.3s ease;
+}
+
+.map_ctn a:hover {
+  color: white;
+  background-color:rgb(37, 58, 99);
+  transition: all 0.3s ease;
+}
+
+.general_info_ctn {
+  display: flex;
+  flex-direction: column;
+  max-width: 33.33%;
+  min-width: 25%;
+  color: rgb(37, 58, 99);
+  margin-right: 20px;
+}
+
+.borders_info_ctn {
+  display: flex;
+  flex-direction: column;
+  max-width: 33.33%;
+  color: rgb(37, 58, 99);
+}
+
+.other_info_ctn {
+  display: flex;
+  flex-direction: column;
+  max-width: 33.33%;
+  color: rgb(37, 58, 99);
+  margin-right: 20px;
+  min-width: 25%;
+}
+
+.info_item {
+  margin: 2px;
+}
+
+.info_item span, .info_item span {
+  font-weight: 600;
+}
+
+.arr_ctn {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.arr_item {
+  margin: 2px;
+  padding: 3px;
+  font-size: 0.7rem;
+  color: rgb(51, 160, 233);
+  border-radius: 15px;
+  border: 1px solid rgb(51, 160, 233);
+}
+
+.general_info_ctn span, .other_info_ctn span {
+  font-weight: 600;
+}
+
+.borders_ctn {
+  display: flex;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.borders_item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 150px;
+}
+
+.borders_item img {
+  max-width: 50px;
+} 
+
+.borders_item a {
+  text-decoration: none;
+  font-size: 0.9rem;
+  color: rgb(51, 160, 233);
+  margin-left: 5px;
+}
+
+.borders_item a:hover {
+  color: rgb(37, 58, 99);
+}
+

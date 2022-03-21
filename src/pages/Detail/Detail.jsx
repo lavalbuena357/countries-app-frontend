@@ -1,22 +1,31 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 import styles from './Detail.module.css'
 import { Link, useParams } from 'react-router-dom'
 import { getCountryById } from '../../redux/actions'
+import { useEventCallback } from '@mui/material'
 
 function Detail() {
   const [isLoading, setIsLoading] = useState(true)
+  const [country, setCountry] = useState(null)
+  const [border, setBorders] = useState([])
 
   const { id } = useParams()
-  const dispatch = useDispatch()
 
-  useEffect(async () => {
-    await dispatch(getCountryById(id))
+  useEffect(async () => { //eslint-disable-line
+    const res = await getCountryById(id)
+    setCountry(res)
+    setBorders(await idToName(res))
     setIsLoading(false)
-  }, [])
-  
-  const country = useSelector(state => state.currentCountry)
+  }, [id])
 
+  async function idToName(country) {
+    let arr = []
+    for(let i = 0; i < country.borders.length; i++) {
+      const res = await getCountryById(country.borders[i])
+      arr[i] = {id: country.borders[i], name: res.name, flag: res.flag}
+    }
+    return arr
+  }
 
   return (
     <div className={styles.container}>
@@ -96,19 +105,20 @@ function Detail() {
             </div>
           </div>
 
-          <div className={styles.borders_ctn}>
-            <div className={styles.arr_ctn}>
-                <span>Fronteras: </span>
-                {country.borders.map((el, i) => (
-                  <div className={styles.arr_item} key={i}>
-                    <Link to='/'>{el}</Link>
-                  </div>
-                ))}
-              </div>
+          <div className={styles.borders_info_ctn}>
+            <h3>Fronteras: </h3>
+            <div className={styles.borders_ctn}>
+              {border.map((el, i) => (
+                <div className={styles.borders_item} key={i}>
+                  <img src={el.flag} alt={`bandera de ${el.name}`} />
+                  <Link to={`/${el.id}`}>{el.name}</Link>
+                </div>
+              ))}
             </div>
           </div>
         </div>
-      }
+      </div>
+    }
     </div>
   )
 }
