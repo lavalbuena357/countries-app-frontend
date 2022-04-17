@@ -11,8 +11,6 @@ Esta aplicación desarrollada bajo `React.Js` consume una [API Rest](https://cou
 
 Se usaron tecnologías como `React.Js` y  `Redux` para el manejo de los estados
 
-Está casi terminada la adaptabilidad para dispositivos móviles, además podrá encontrar el enlace para cada una de mis redes sociales.
-
 Siéntase libre de explorar este proyecto o mejorarlo.
 
 ## Deploy
